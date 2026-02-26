@@ -105,5 +105,10 @@ def search():
     return redirect(url_for('show_patients'))
 
 
-if __name__ == '__main__':
-    app.run(debug=True)
+import os
+
+# ... rest of your code ...
+
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
