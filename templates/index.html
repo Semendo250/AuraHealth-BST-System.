@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aura Health | Hospital Registry</title>
+    <style>
+        /* MODERN UI STYLING */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .registry-box {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            width: 100%;
+            max-width: 400px;
+            text-align: center;
+            <hr style="border: 0; border-top: 1px solid #eee; margin: 20px 0;">
+<div style="font-size: 0.8rem; color: #95a5a6; font-style: italic;">
+    System Managed by: <strong>Douglas Semendo</strong><br>
+    Aura Health Systems &copy; 2026
+</div>
+
+
+        }
+
+        h2 { color: #2c3e50; margin-bottom: 30px; }
+
+        .input-group { margin-bottom: 20px; text-align: left; }
+
+        label { display: block; margin-bottom: 8px; font-weight: 600; color: #5d6d7e; font-size: 0.9rem; }
+
+        input {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #eef2f3;
+            border-radius: 10px;
+            font-size: 1rem;
+            box-sizing: border-box;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        input:focus { border-color: #3498db; }
+
+        button {
+            width: 100%;
+            padding: 14px;
+            background: #3498db;
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+
+        button:hover { background: #2980b9; }
+
+        .nav-link { display: block; margin-top: 25px; color: #3498db; text-decoration: none; font-weight: 600; }
+
+        /* FLASH MESSAGE STYLE */
+        .flash-message {
+            background: #d4edda;
+            color: #155724;
+            padding: 15px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #c3e6cb;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="registry-box">
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <div class="flash-message">
+                {{ message }}
+                  <hr style="border: 0; border-top: 1px solid #f0f0f0; margin: 25px 0;">
+
+        <div style="text-align: center; padding-bottom: 10px;">
+            <p style="font-size: 0.85rem; color: #7f8c8d; margin-bottom: 5px;">
+                Designed & Developed by Douglas Semendo
+            </p>
+            <h3 style="margin: 0; color: #3498db; font-size: 1.1rem; letter-spacing: 1px;">
+                Douglas Semendo
+            </h3>
+            <p style="font-size: 0.7rem; color: #bdc3c7; margin-top: 10px; text-transform: uppercase;">
+                Aura Health Systems &copy; 2026
+            </p>
+        </div>
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+
+        <h2>Patient Registry System</h2>
+
+        <form action="/insert" method="post">
+            <div class="input-group">
+                <label>Patient Full Name</label>
+                <input type="text" name="patient_name" placeholder="Enter name eg Douglas Semendo" required>
+            </div>
+
+            <div class="input-group">
+                <label>Patient ID Number</label>
+                <input type="number" name="patient_id" placeholder="Enter patient ID eg 009" required>
+            </div>
+
+            <button type="submit">Add to System</button>
+        </form>
+
+        <a href="/patients" class="nav-link">📂 View Patient Directory</a>
+    </div>
+
+    <script>
+        setTimeout(function() {
+            var messages = document.querySelectorAll('.flash-message');
+            messages.forEach(function(msg) {
+                msg.style.transition = "opacity 0.6s ease";
+                msg.style.opacity = "0";
+                setTimeout(function() { msg.remove(); }, 600);
+            });
+        }, 3000); // 3 seconds
+    </script>
+
+</body>
+</html>
